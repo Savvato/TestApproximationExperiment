@@ -5,9 +5,9 @@ package main.approximation.least_square_method;
  */
 public class Formula
 {
-    private double c1;
-    private double c2;
-    private double c3;
+    public double c1;
+    public double c2;
+    public double c3;
 
     /**
      * Constructor

@@ -11,4 +11,8 @@ public class Point
         this.x2 = x2;
         this.y = y;
     }
+
+    public void print() {
+        System.out.println("(" + x1 + ", " + x2 + ", " + y + ");");
+    }
 }

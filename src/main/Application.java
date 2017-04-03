@@ -7,10 +7,9 @@ import java.util.Scanner;
 
 public class Application
 {
+    ApproximationHandler approximationHandler;
     private Point startPoint;
     private ResponseFunction responseFunction = ((x1, x2) -> 10 / (6 + Math.sqrt(Math.pow(x1, 2) + Math.pow(x2, 2))));
-
-    ApproximationHandler approximationHandler;
 
     public static void main(String[] args) {
         Application application = new Application();
@@ -31,8 +30,7 @@ public class Application
         double x1 = scanner.nextDouble();
         writer.print("x2 = ");
         double x2 = scanner.nextDouble();
-        writer.print("y = ");
-        double y = scanner.nextDouble();
+        double y = this.responseFunction.calculate(x1, x2);
 
         this.startPoint = new Point(x1, x2, y);
     }
