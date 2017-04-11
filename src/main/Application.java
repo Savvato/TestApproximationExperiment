@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Application
 {
-    ApproximationHandler approximationHandler;
+    private ApproximationHandler approximationHandler;
     private Point startPoint;
     private ResponseFunction responseFunction = ((x1, x2) -> 10 / (6 + Math.sqrt(Math.pow(x1, 2) + Math.pow(x2, 2))));
 
@@ -19,7 +19,9 @@ public class Application
     public void run() {
         this.readStartPoint();
         this.approximationHandler = new ApproximationHandler(this.startPoint, this.responseFunction);
-        this.approximationHandler.run();
+        Point extremum = this.approximationHandler.run();
+        System.out.println("======RESULT======");
+        extremum.print();
     }
 
     private void readStartPoint() {

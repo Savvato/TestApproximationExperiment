@@ -12,6 +12,9 @@ public class Point
         this.y = y;
     }
 
+    /**
+     * Вывод в консоль
+     */
     public void print() {
         System.out.println("(" + x1 + ", " + x2 + ", " + y + ");");
     }

@@ -34,13 +34,18 @@ public class ApproximationHandler
             gradient = this.calculateGradient(formula);
             oldPoint = this.currentCentralPoint;
             this.moveCentralPoint(gradient);
-            this.currentCentralPoint.print();
         }
         while (oldPoint.y < this.currentCentralPoint.y);
 
         return oldPoint;
     }
 
+    /**
+     * Расчет градиента
+     *
+     * @param formula
+     * @return
+     */
     private double[] calculateGradient(Formula formula) {
         return new double[]{
                 this.currentCentralPoint.x1 > 0 ? formula.c2 : -formula.c2,
@@ -48,6 +53,11 @@ public class ApproximationHandler
         };
     }
 
+    /**
+     * Перемещение центральной точки эксперимента
+     *
+     * @param gradient
+     */
     private void moveCentralPoint(double[] gradient) {
         double newX1 = this.currentCentralPoint.x1 + gradient[0];
         double newX2 = this.currentCentralPoint.x2 + gradient[1];
@@ -55,6 +65,11 @@ public class ApproximationHandler
         this.currentCentralPoint = new Point(newX1, newX2, newY);
     }
 
+    /**
+     * Получение обучающих точек для МНК
+     *
+     * @return
+     */
     private Point[] getTrainingPoints() {
         return new Point[]{
                 new Point(
