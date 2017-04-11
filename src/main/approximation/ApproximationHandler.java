@@ -35,7 +35,6 @@ public class ApproximationHandler
             oldPoint = this.currentCentralPoint;
             this.moveCentralPoint(gradient);
             this.currentCentralPoint.print();
-
         }
         while (oldPoint.y < this.currentCentralPoint.y);
 
@@ -43,7 +42,10 @@ public class ApproximationHandler
     }
 
     private double[] calculateGradient(Formula formula) {
-        return new double[]{formula.c2, formula.c3};
+        return new double[]{
+                this.currentCentralPoint.x1 > 0 ? formula.c2 : -formula.c2,
+                this.currentCentralPoint.x2 > 0 ? formula.c3 : -formula.c3,
+        };
     }
 
     private void moveCentralPoint(double[] gradient) {
