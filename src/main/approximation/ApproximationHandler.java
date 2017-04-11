@@ -36,13 +36,13 @@ public class ApproximationHandler
             this.currentCentralPoint.print();
 
         }
-        while (Math.pow(gradient[0] + gradient[1], 2) < 0.001);
+        while (Math.pow(gradient[0] + gradient[1], 2) > 0.0000001);
 
 
     }
 
     private double[] calculateGradient(Formula formula) {
-        return new double[]{-formula.c2, -formula.c3};
+        return new double[]{formula.c2, formula.c3};
     }
 
     private void moveCentralPoint(double[] gradient) {
