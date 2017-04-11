@@ -18,9 +18,9 @@ public class ApproximationHandler
         this.responseFunction = responseFunction;
     }
 
-    public void run() {
+    public Point run() {
         this.currentCentralPoint = this.startPoint;
-
+        Point oldPoint;
         double[] gradient;
 
         do {
@@ -32,13 +32,14 @@ public class ApproximationHandler
             double k3 = coefficients.data[2][0];
             Formula formula = new Formula(k1, k2, k3);
             gradient = this.calculateGradient(formula);
+            oldPoint = this.currentCentralPoint;
             this.moveCentralPoint(gradient);
             this.currentCentralPoint.print();
 
         }
-        while (Math.pow(gradient[0] + gradient[1], 2) > 0.0000001);
+        while (oldPoint.y < this.currentCentralPoint.y);
 
-
+        return oldPoint;
     }
 
     private double[] calculateGradient(Formula formula) {
